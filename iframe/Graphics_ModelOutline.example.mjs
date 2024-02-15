@@ -1,4 +1,4 @@
-import { getDeviceType, rootPath } from '@examples/utils';
+import { deviceType, rootPath } from '@examples/utils';
 
 const canvas = document.getElementById('application-canvas');
 if (!(canvas instanceof HTMLCanvasElement)) {
@@ -9,7 +9,7 @@ const assets = {
     outline: new pc.Asset('outline', 'script', { url: rootPath + '/static/scripts/posteffects/posteffect-outline.js' })
 };
 const gfxOptions = {
-    deviceTypes: [getDeviceType()],
+    deviceTypes: [deviceType],
     glslangUrl: rootPath + '/static/lib/glslang/glslang.js',
     twgslUrl: rootPath + '/static/lib/twgsl/twgsl.js'
 };
