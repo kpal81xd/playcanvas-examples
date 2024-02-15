@@ -1,0 +1,152 @@
+<!-- N.B. All single quote strings starting with '@' and are in all caps denote placeholders for replacement code  -->
+<html>
+    <head>
+        <link rel="stylesheet" href="./example.css" />
+        <title>Graphics: MaterialPhysical</title>
+    </head>
+    <body>
+        <div id="app">
+            <div id="appInner">
+                
+                <canvas id="application-canvas"></canvas>
+            </div>
+        </div>
+        <script src="./playcanvas-observer.js"></script>
+        <script src="./polyfill.js"></script>
+        <script type="importmap">
+            {
+                "imports": {
+                    "@examples/config": "./Graphics_MaterialPhysical.config.mjs",
+                    "@examples/utils": "./utils.mjs",
+                    "@examples/files": "./files.mjs",
+                    "@examples/ministats": "./ministats.mjs"
+                }
+            }
+        </script>
+        <script type="module">
+            import config from '@examples/config';
+            import { fetchFile, loadES5, getQueryParams, getDeviceType, fire } from '@examples/utils';
+            import files from '@examples/files';
+            import MiniStats from '@examples/ministats';
+
+            window.ready = false; // Used in indicate if UI can render Controls
+
+            let app;
+            let started = false;
+            let allowRestart = true;
+            let data;
+            let scriptUrl;
+
+            function start(app) {
+                if (app) {
+                    if (!app?.graphicsDevice?.canvas) {
+                        console.warn('No canvas found.');
+                        return;
+                    }
+                    MiniStats.enable(app, true);
+                }
+
+                if (!started) {
+                    // Sets code editor component files
+                    // Sets example component files (for controls + description)
+                    // Sets mini stats enabled state based on UI
+                    fire('exampleLoad', { files, description: config.DESCRIPTION || '' });
+                }
+                started = true;
+
+                // Updates controls UI
+                fire('updateFiles', { files });
+
+                if (app) {
+                    // Updates device UI
+                    fire('updateActiveDevice', { deviceType: app?.graphicsDevice?.deviceType });
+                }
+
+                allowRestart = true;
+            };
+
+            async function load(files) {
+                allowRestart = false;
+                window.top.data = window.data = data = new observer.Observer({});
+
+                if (!started) {
+                    // just notify to clean UI, but not during hot-reload
+                    fire('exampleLoading', { showDeviceSelector: !config.NO_DEVICE_SELECTOR });
+                }
+
+                const blob = new Blob([files['example.mjs']], { type: 'text/javascript' });
+                if (scriptUrl) {
+                    URL.revokeObjectURL(scriptUrl);
+                }
+                scriptUrl = URL.createObjectURL(blob);
+
+                try {
+                    const module = await import(scriptUrl);
+                    app = module.app;
+                } catch (e) {
+                    console.log(e);
+                    allowRestart = true;
+                    return;
+                }
+                window.ready = true;
+
+                if (app) {
+                    if (app.frame) {
+                        start(app);
+                    } else {
+                        app.once('start', () => start(app));
+                    }
+                } else {
+                    start(null);
+                }
+            }
+
+            function hotReload() {
+                if (!allowRestart) {
+                    console.warn('Dropping restart while still restarting');
+                    return;
+                }
+                destroy();
+                load(files);
+            }
+
+            function destroy() {
+                MiniStats.destroy();
+                if (app && app.graphicsDevice) {
+                    app.destroy();
+                }
+                window.ready = false;
+            }
+
+            function exit() {
+                if (scriptUrl) {
+                    URL.revokeObjectURL(scriptUrl);
+                }
+                destroy();
+            }
+
+            async function main() {
+                await import("./playcanvas.js");
+                await import('./playcanvas-extras.js');
+
+                window.top.pc = pc;
+                window.top.pcx = window.pcx;
+
+                files['example.mjs'] = await fetchFile("./Graphics_MaterialPhysical.example.mjs");
+                files['controls.mjs'] = await fetchFile("./Graphics_MaterialPhysical.controls.mjs");
+
+                Object.assign(files, config.FILES ?? {});
+
+                await load(files);
+            }
+
+            window.addEventListener('requestFiles', () => fire('requestedFiles', { files }));
+            window.addEventListener('stats', (event) => MiniStats.enable(app, !!event.detail?.state));
+            window.addEventListener('hotReload', hotReload);
+            window.addEventListener('destroy', destroy);
+            window.addEventListener('beforeunload', exit, false);
+
+            document.addEventListener('DOMContentLoaded', main);
+        </script>
+    </body>
+</html>
