@@ -1,3 +1,4 @@
+import { data } from '@examples/observer';
 import { deviceType, rootPath } from '@examples/utils';
 
 const canvas = document.getElementById('application-canvas');

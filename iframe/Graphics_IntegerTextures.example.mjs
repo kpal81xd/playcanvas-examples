@@ -1,3 +1,4 @@
+import { data } from '@examples/observer';
 import files from '@examples/files';
 import { deviceType, rootPath } from '@examples/utils';
 
