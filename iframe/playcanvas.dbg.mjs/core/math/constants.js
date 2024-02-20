@@ -1,0 +1,54 @@
+/**
+ * A linear interpolation scheme.
+ *
+ * @type {number}
+ * @category Math
+ */
+const CURVE_LINEAR = 0;
+
+/**
+ * A smooth step interpolation scheme.
+ *
+ * @type {number}
+ * @category Math
+ */
+const CURVE_SMOOTHSTEP = 1;
+
+/**
+ * A Catmull-Rom spline interpolation scheme. This interpolation scheme is deprecated. Use
+ * CURVE_SPLINE instead.
+ *
+ * @type {number}
+ * @deprecated
+ * @ignore
+ */
+const CURVE_CATMULL = 2;
+
+/**
+ * A cardinal spline interpolation scheme. This interpolation scheme is deprecated. Use
+ * CURVE_SPLINE instead.
+ *
+ * @type {number}
+ * @deprecated
+ * @ignore
+ */
+const CURVE_CARDINAL = 3;
+
+/**
+ * Cardinal spline interpolation scheme. For Catmull-Rom, specify curve tension 0.5.
+ *
+ * @type {number}
+ * @category Math
+ */
+const CURVE_SPLINE = 4;
+
+/**
+ * A stepped interpolator, free from the shackles of blending.
+ *
+ * @type {number}
+ * @category Math
+ */
+const CURVE_STEP = 5;
+
+export { CURVE_CARDINAL, CURVE_CATMULL, CURVE_LINEAR, CURVE_SMOOTHSTEP, CURVE_SPLINE, CURVE_STEP };
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29uc3RhbnRzLmpzIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi8uLi9zcmMvY29yZS9tYXRoL2NvbnN0YW50cy5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEEgbGluZWFyIGludGVycG9sYXRpb24gc2NoZW1lLlxuICpcbiAqIEB0eXBlIHtudW1iZXJ9XG4gKiBAY2F0ZWdvcnkgTWF0aFxuICovXG5leHBvcnQgY29uc3QgQ1VSVkVfTElORUFSID0gMDtcblxuLyoqXG4gKiBBIHNtb290aCBzdGVwIGludGVycG9sYXRpb24gc2NoZW1lLlxuICpcbiAqIEB0eXBlIHtudW1iZXJ9XG4gKiBAY2F0ZWdvcnkgTWF0aFxuICovXG5leHBvcnQgY29uc3QgQ1VSVkVfU01PT1RIU1RFUCA9IDE7XG5cbi8qKlxuICogQSBDYXRtdWxsLVJvbSBzcGxpbmUgaW50ZXJwb2xhdGlvbiBzY2hlbWUuIFRoaXMgaW50ZXJwb2xhdGlvbiBzY2hlbWUgaXMgZGVwcmVjYXRlZC4gVXNlXG4gKiBDVVJWRV9TUExJTkUgaW5zdGVhZC5cbiAqXG4gKiBAdHlwZSB7bnVtYmVyfVxuICogQGRlcHJlY2F0ZWRcbiAqIEBpZ25vcmVcbiAqL1xuZXhwb3J0IGNvbnN0IENVUlZFX0NBVE1VTEwgPSAyO1xuXG4vKipcbiAqIEEgY2FyZGluYWwgc3BsaW5lIGludGVycG9sYXRpb24gc2NoZW1lLiBUaGlzIGludGVycG9sYXRpb24gc2NoZW1lIGlzIGRlcHJlY2F0ZWQuIFVzZVxuICogQ1VSVkVfU1BMSU5FIGluc3RlYWQuXG4gKlxuICogQHR5cGUge251bWJlcn1cbiAqIEBkZXByZWNhdGVkXG4gKiBAaWdub3JlXG4gKi9cbmV4cG9ydCBjb25zdCBDVVJWRV9DQVJESU5BTCA9IDM7XG5cbi8qKlxuICogQ2FyZGluYWwgc3BsaW5lIGludGVycG9sYXRpb24gc2NoZW1lLiBGb3IgQ2F0bXVsbC1Sb20sIHNwZWNpZnkgY3VydmUgdGVuc2lvbiAwLjUuXG4gKlxuICogQHR5cGUge251bWJlcn1cbiAqIEBjYXRlZ29yeSBNYXRoXG4gKi9cbmV4cG9ydCBjb25zdCBDVVJWRV9TUExJTkUgPSA0O1xuXG4vKipcbiAqIEEgc3RlcHBlZCBpbnRlcnBvbGF0b3IsIGZyZWUgZnJvbSB0aGUgc2hhY2tsZXMgb2YgYmxlbmRpbmcuXG4gKlxuICogQHR5cGUge251bWJlcn1cbiAqIEBjYXRlZ29yeSBNYXRoXG4gKi9cbmV4cG9ydCBjb25zdCBDVVJWRV9TVEVQID0gNTtcbiJdLCJuYW1lcyI6WyJDVVJWRV9MSU5FQVIiLCJDVVJWRV9TTU9PVEhTVEVQIiwiQ1VSVkVfQ0FUTVVMTCIsIkNVUlZFX0NBUkRJTkFMIiwiQ1VSVkVfU1BMSU5FIiwiQ1VSVkVfU1RFUCJdLCJtYXBwaW5ncyI6IkFBQUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ08sTUFBTUEsWUFBWSxHQUFHLEVBQUM7O0FBRTdCO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNPLE1BQU1DLGdCQUFnQixHQUFHLEVBQUM7O0FBRWpDO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDTyxNQUFNQyxhQUFhLEdBQUcsRUFBQzs7QUFFOUI7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNPLE1BQU1DLGNBQWMsR0FBRyxFQUFDOztBQUUvQjtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDTyxNQUFNQyxZQUFZLEdBQUcsRUFBQzs7QUFFN0I7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ08sTUFBTUMsVUFBVSxHQUFHOzs7OyJ9

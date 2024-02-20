@@ -1,0 +1,26 @@
+/**
+ * Linear distance model.
+ *
+ * @type {string}
+ * @category Sound
+ */
+const DISTANCE_LINEAR = 'linear';
+
+/**
+ * Inverse distance model.
+ *
+ * @type {string}
+ * @category Sound
+ */
+const DISTANCE_INVERSE = 'inverse';
+
+/**
+ * Exponential distance model.
+ *
+ * @type {string}
+ * @category Sound
+ */
+const DISTANCE_EXPONENTIAL = 'exponential';
+
+export { DISTANCE_EXPONENTIAL, DISTANCE_INVERSE, DISTANCE_LINEAR };
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29uc3RhbnRzLmpzIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi8uLi9zcmMvcGxhdGZvcm0vYXVkaW8vY29uc3RhbnRzLmpzIl0sInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogTGluZWFyIGRpc3RhbmNlIG1vZGVsLlxuICpcbiAqIEB0eXBlIHtzdHJpbmd9XG4gKiBAY2F0ZWdvcnkgU291bmRcbiAqL1xuZXhwb3J0IGNvbnN0IERJU1RBTkNFX0xJTkVBUiA9ICdsaW5lYXInO1xuXG4vKipcbiAqIEludmVyc2UgZGlzdGFuY2UgbW9kZWwuXG4gKlxuICogQHR5cGUge3N0cmluZ31cbiAqIEBjYXRlZ29yeSBTb3VuZFxuICovXG5leHBvcnQgY29uc3QgRElTVEFOQ0VfSU5WRVJTRSA9ICdpbnZlcnNlJztcblxuLyoqXG4gKiBFeHBvbmVudGlhbCBkaXN0YW5jZSBtb2RlbC5cbiAqXG4gKiBAdHlwZSB7c3RyaW5nfVxuICogQGNhdGVnb3J5IFNvdW5kXG4gKi9cbmV4cG9ydCBjb25zdCBESVNUQU5DRV9FWFBPTkVOVElBTCA9ICdleHBvbmVudGlhbCc7XG4iXSwibmFtZXMiOlsiRElTVEFOQ0VfTElORUFSIiwiRElTVEFOQ0VfSU5WRVJTRSIsIkRJU1RBTkNFX0VYUE9ORU5USUFMIl0sIm1hcHBpbmdzIjoiQUFBQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDTyxNQUFNQSxlQUFlLEdBQUcsU0FBUTs7QUFFdkM7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ08sTUFBTUMsZ0JBQWdCLEdBQUcsVUFBUzs7QUFFekM7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ08sTUFBTUMsb0JBQW9CLEdBQUc7Ozs7In0=

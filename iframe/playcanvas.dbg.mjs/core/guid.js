@@ -1,0 +1,23 @@
+/**
+ * Basically a very large random number (128-bit) which means the probability of creating two that
+ * clash is vanishingly small. GUIDs are used as the unique identifiers for Entities.
+ *
+ * @namespace
+ */
+const guid = {
+  /**
+   * Create an RFC4122 version 4 compliant GUID.
+   *
+   * @returns {string} A new GUID.
+   */
+  create() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      const r = Math.random() * 16 | 0;
+      const v = c === 'x' ? r : r & 0x3 | 0x8;
+      return v.toString(16);
+    });
+  }
+};
+
+export { guid };
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZ3VpZC5qcyIsInNvdXJjZXMiOlsiLi4vLi4vLi4vLi4vLi4vc3JjL2NvcmUvZ3VpZC5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEJhc2ljYWxseSBhIHZlcnkgbGFyZ2UgcmFuZG9tIG51bWJlciAoMTI4LWJpdCkgd2hpY2ggbWVhbnMgdGhlIHByb2JhYmlsaXR5IG9mIGNyZWF0aW5nIHR3byB0aGF0XG4gKiBjbGFzaCBpcyB2YW5pc2hpbmdseSBzbWFsbC4gR1VJRHMgYXJlIHVzZWQgYXMgdGhlIHVuaXF1ZSBpZGVudGlmaWVycyBmb3IgRW50aXRpZXMuXG4gKlxuICogQG5hbWVzcGFjZVxuICovXG5jb25zdCBndWlkID0ge1xuICAgIC8qKlxuICAgICAqIENyZWF0ZSBhbiBSRkM0MTIyIHZlcnNpb24gNCBjb21wbGlhbnQgR1VJRC5cbiAgICAgKlxuICAgICAqIEByZXR1cm5zIHtzdHJpbmd9IEEgbmV3IEdVSUQuXG4gICAgICovXG4gICAgY3JlYXRlKCkge1xuICAgICAgICByZXR1cm4gJ3h4eHh4eHh4LXh4eHgtNHh4eC15eHh4LXh4eHh4eHh4eHh4eCcucmVwbGFjZSgvW3h5XS9nLCBmdW5jdGlvbiAoYykge1xuICAgICAgICAgICAgY29uc3QgciA9IE1hdGgucmFuZG9tKCkgKiAxNiB8IDA7XG4gICAgICAgICAgICBjb25zdCB2ID0gKGMgPT09ICd4JykgPyByIDogKHIgJiAweDMgfCAweDgpO1xuICAgICAgICAgICAgcmV0dXJuIHYudG9TdHJpbmcoMTYpO1xuICAgICAgICB9KTtcbiAgICB9XG59O1xuXG5leHBvcnQgeyBndWlkIH07XG4iXSwibmFtZXMiOlsiZ3VpZCIsImNyZWF0ZSIsInJlcGxhY2UiLCJjIiwiciIsIk1hdGgiLCJyYW5kb20iLCJ2IiwidG9TdHJpbmciXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBLE1BQU1BLElBQUksR0FBRztBQUNUO0FBQ0o7QUFDQTtBQUNBO0FBQ0E7QUFDSUMsRUFBQUEsTUFBTUEsR0FBRztJQUNMLE9BQU8sc0NBQXNDLENBQUNDLE9BQU8sQ0FBQyxPQUFPLEVBQUUsVUFBVUMsQ0FBQyxFQUFFO01BQ3hFLE1BQU1DLENBQUMsR0FBR0MsSUFBSSxDQUFDQyxNQUFNLEVBQUUsR0FBRyxFQUFFLEdBQUcsQ0FBQyxDQUFBO0FBQ2hDLE1BQUEsTUFBTUMsQ0FBQyxHQUFJSixDQUFDLEtBQUssR0FBRyxHQUFJQyxDQUFDLEdBQUlBLENBQUMsR0FBRyxHQUFHLEdBQUcsR0FBSSxDQUFBO0FBQzNDLE1BQUEsT0FBT0csQ0FBQyxDQUFDQyxRQUFRLENBQUMsRUFBRSxDQUFDLENBQUE7QUFDekIsS0FBQyxDQUFDLENBQUE7QUFDTixHQUFBO0FBQ0o7Ozs7In0=
