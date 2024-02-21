@@ -1,0 +1,19 @@
+/**
+ * Always use the application's resolution as the resolution for the {@link ScreenComponent}.
+ *
+ * @type {string}
+ * @category User Interface
+ */
+const SCALEMODE_NONE = 'none';
+
+/**
+ * Scale the {@link ScreenComponent} when the application's resolution is different than the
+ * ScreenComponent's referenceResolution.
+ *
+ * @type {string}
+ * @category User Interface
+ */
+const SCALEMODE_BLEND = 'blend';
+
+export { SCALEMODE_BLEND, SCALEMODE_NONE };
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29uc3RhbnRzLmpzIiwic291cmNlcyI6WyIuLi8uLi8uLi8uLi8uLi8uLi8uLi9zcmMvZnJhbWV3b3JrL2NvbXBvbmVudHMvc2NyZWVuL2NvbnN0YW50cy5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEFsd2F5cyB1c2UgdGhlIGFwcGxpY2F0aW9uJ3MgcmVzb2x1dGlvbiBhcyB0aGUgcmVzb2x1dGlvbiBmb3IgdGhlIHtAbGluayBTY3JlZW5Db21wb25lbnR9LlxuICpcbiAqIEB0eXBlIHtzdHJpbmd9XG4gKiBAY2F0ZWdvcnkgVXNlciBJbnRlcmZhY2VcbiAqL1xuZXhwb3J0IGNvbnN0IFNDQUxFTU9ERV9OT05FID0gJ25vbmUnO1xuXG4vKipcbiAqIFNjYWxlIHRoZSB7QGxpbmsgU2NyZWVuQ29tcG9uZW50fSB3aGVuIHRoZSBhcHBsaWNhdGlvbidzIHJlc29sdXRpb24gaXMgZGlmZmVyZW50IHRoYW4gdGhlXG4gKiBTY3JlZW5Db21wb25lbnQncyByZWZlcmVuY2VSZXNvbHV0aW9uLlxuICpcbiAqIEB0eXBlIHtzdHJpbmd9XG4gKiBAY2F0ZWdvcnkgVXNlciBJbnRlcmZhY2VcbiAqL1xuZXhwb3J0IGNvbnN0IFNDQUxFTU9ERV9CTEVORCA9ICdibGVuZCc7XG4iXSwibmFtZXMiOlsiU0NBTEVNT0RFX05PTkUiLCJTQ0FMRU1PREVfQkxFTkQiXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNPLE1BQU1BLGNBQWMsR0FBRyxPQUFNOztBQUVwQztBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNPLE1BQU1DLGVBQWUsR0FBRzs7OzsifQ==
